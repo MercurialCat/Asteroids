@@ -51,6 +51,12 @@ def main():
         for object in drawable:
             object.draw(screen)
 
+        for asteroid in asteroids:
+            for shot in shots:
+                if shot.collision(asteroid):
+                    asteroid.split()
+                    shot.kill()
+
         pygame.display.flip()
 
         dt = fps.tick(60) / 1000 # framerate set to 60
